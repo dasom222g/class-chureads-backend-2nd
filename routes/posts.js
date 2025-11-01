@@ -54,6 +54,7 @@ postRouter.post("/", async (req, res) => {
 
     // GPT AI로 태그 생성
     const tags = await generateTags(post.content);
+    console.log("🚀 ~ tags:", tags);
 
     const newItem = {
       ...post,
