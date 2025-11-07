@@ -4,6 +4,7 @@ import cors from "cors";
 import { handleSSEConnection } from "./sse/sseManager.js";
 import postRouter, { initialRouter } from "./routes/posts.js";
 import { connectDB } from "./database/db.js";
+import { generateTags, testContents } from "./services/tagService.js";
 
 // 환경변수 로드
 dotenv.config();
@@ -30,4 +31,10 @@ app.listen(PORT, async () => {
   // TODO: DB연결
   const db = await connectDB();
   initialRouter(db);
+
+  // GPT 테스트
+  // testContents.forEach(async (content) => {
+  //   const testTags = await generateTags(content);
+  //   console.log("🚀 ~ testTags:", testTags);
+  // });
 });

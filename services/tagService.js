@@ -74,12 +74,13 @@ export const generateTags = async (content) => {
       messages,
       temperature: 1,
       max_tokens: 4000,
-      top_p: 1,
+      top_p: 1, // 확률기반 단어 조합에서 상위레벨 얼마나 적용할지
     });
 
     // 미션: AI가 출력한 태그들의 텍스트를 배열로 변환하여 반환하기
-    const tagText = response.choices[0].message.content;
-    const tags = tagText.split(",");
+    const tagText = response.choices[0].message.content; // string (태그1, 태그2, 태그3)
+    console.log("🚀 ~ tagText:", tagText);
+    const tags = tagText.split(","); // array
     return tags;
   } catch (error) {
     console.log(error);
